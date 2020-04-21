@@ -14,11 +14,22 @@ container.resolve(function(userController){
         server.listen(3000, function(){
             console.log("Listening on port 3000.");
         });
+
+        ConfigureExpress(app);
+
+        //Setup router
+        const router=require('express-promise-router')();
+        userController.SetRouting(router);
+
+        app.use(router);
     }
 
-    //Setup router
-    const router=require('express-promise-router')();
-    userController.SetRouting(router);
+    
 
-    app.use(router);
+    function ConfigureExpress(app){
+        app.use(express.static('public'));
+        app.set('view engine', 'ejs');
+        app.use(bodyParser.json());
+        app.use(bodyParser.urlencoded({extended:true}));
+    }
 })
