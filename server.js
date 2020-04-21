@@ -4,14 +4,21 @@ const ejs=require('ejs');
 const http=require('http');
 const container=require('./container');
 
-container.resolve(function(){
+container.resolve(function(userController){
+    //Setup express
     const app=SetupExpress();
 
     function SetupExpress(){
         const app=express();
         const server=http.createServer(app);
         server.listen(3000, function(){
-            console.log("Listening port 3000.");
+            console.log("Listening on port 3000.");
         });
     }
+
+    //Setup router
+    const router=require('express-promise-router')();
+    userController.SetRouting(router);
+
+    app.use(router);
 })
