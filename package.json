@@ -21,10 +21,16 @@
   "homepage": "https://github.com/harshan92/MyKikApp#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^3.2.0",
+    "cookie-parser": "^1.4.5",
     "dependable": "^1.1.0",
     "ejs": "^3.0.2",
     "express": "^4.17.1",
     "express-promise-router": "^3.0.3",
-    "lodash": "^4.17.15"
+    "express-session": "^1.17.1",
+    "express-validator": "^6.4.0",
+    "lodash": "^4.17.15",
+    "mongoose": "^5.9.10"
   }
 }
