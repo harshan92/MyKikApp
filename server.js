@@ -47,7 +47,7 @@ container.resolve(function(userController){
             secret:'thisisasecret',
             resave:true,
             saveInitialized:true,
-            store:new MongoStore({mongooseConnection:mongoose.connection()})
+            store:new MongoStore({mongooseConnection:mongoose.connection})
         }));
         app.use(flash());
         app.use(passport.initialize());
