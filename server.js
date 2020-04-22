@@ -8,6 +8,7 @@ const session=require("express-session");
 const MongoStore=require('connect-mongo')(session);
 const mongoose=require("mongoose");
 const flash=require('connect-flash');
+const passport=require('passport');
 
 const container=require('./container');
 
@@ -49,5 +50,7 @@ container.resolve(function(userController){
             store:new MongoStore({mongooseConnection:mongoose.connection()})
         }));
         app.use(flash());
+        app.use(passport.initialize());
+        app.use(passport.session());
     }
 })
