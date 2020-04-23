@@ -4,7 +4,8 @@ const path=require('path');
 const container=dependable.container();
 
 const simpleDependencies=[
-    ['_', 'lodash']
+    ['_', 'lodash'],
+    ['mongoose','mogoose']
 ];
 
 simpleDependencies.forEach(function(val){
