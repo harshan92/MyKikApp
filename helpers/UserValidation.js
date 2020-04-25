@@ -11,6 +11,20 @@ module.exports=function(){
             req.checkBody('password', 'Pasword must not be  less than 6.').isLength({min:6});
             req.checkBody('password2', 'Confirm Password is required.').notEmpty();
             req.checkBody('password2', 'Confirm password doesn\'t match with password.').matches('password');
+
+            req.getValidationResults()
+            .then((result)=>{
+                const errors=result.array();
+                const  messages=[];
+                errors.forEach(error => {
+                    messages.push(error.msg);
+                });
+                req.flash('error', messages);
+                res.redirect('/signup');
+            })
+            .catch((err)=>{
+                return next();
+            })
         }
     }
 }
