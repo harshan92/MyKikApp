@@ -13,7 +13,7 @@ module.exports=function(_, passport, UserValidation){
         },
         getSignUp:function(req, res){
             const errors=req.flash('error')
-            return res.render('signup', {title:'MyKik | Login', message:errors, hasErrors:errors.length>0});
+            return res.render('signup', {title:'MyKik | Login', messages:errors, hasErrors:errors.length>0});
         },
         postSignUp:passport.authenticate('local.signup',{
             successRedirect:'/home',

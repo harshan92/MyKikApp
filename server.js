@@ -12,7 +12,7 @@ const passport=require('passport');
 
 const container=require('./container');
 
-container.resolve(function(userController){
+container.resolve(function(userController, _){
     mongoose.Promise=global.Promise;
     mongoose.connect('mongodb://localhost/mykik', {useMongoClient:true})
     //Setup express
@@ -53,5 +53,6 @@ container.resolve(function(userController){
         app.use(flash());
         app.use(passport.initialize());
         app.use(passport.session());
+        app.locals._=_;
     }
 })

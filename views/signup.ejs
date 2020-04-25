@@ -33,6 +33,19 @@
             <div class="col-md-6 m-auto">
                 <div class="card mt-3 shadow">
                     <div class="card-body mb-5">
+                        <% if(hasErrors){ %>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                             
+                           
+                                <% _.forEach(messages, function(error){ %>
+                                    <%= error %><br>
+                                <% }) %>
+                           
+                          </div>
+                          <% } %>
                         <form class="form" method="POST" action="/signup">
                             <div class="form-group">
                                 <label for="email">Email</label>

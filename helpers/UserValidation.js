@@ -12,7 +12,7 @@ module.exports=function(){
             req.checkBody('password2', 'Confirm Password is required.').notEmpty();
             req.checkBody('password2', 'Confirm password doesn\'t match with password.').matches('password');
 
-            req.getValidationResults()
+            req.getValidationResult()
             .then((result)=>{
                 const errors=result.array();
                 const  messages=[];
