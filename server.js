@@ -3,7 +3,7 @@ const bodyParser=require('body-parser');
 const ejs=require('ejs');
 const http=require('http');
 const cookieParser=require("cookie-parser");
-const validator=require('express-validator')
+// const validator=require('express-validator')
 const session=require("express-session");
 const MongoStore=require('connect-mongo')(session);
 const mongoose=require("mongoose");
@@ -14,7 +14,7 @@ const container=require('./container');
 
 container.resolve(function(userController, _){
     mongoose.Promise=global.Promise;
-    mongoose.connect('mongodb://localhost/mykik', {useMongoClient:true})
+    mongoose.connect('mongodb://localhost/mykik', {useNewUrlParser:true})
     //Setup express
     const app=SetupExpress();
 
@@ -43,7 +43,7 @@ container.resolve(function(userController, _){
         app.set('view engine', 'ejs');
         app.use(bodyParser.json());
         app.use(bodyParser.urlencoded({extended:true}));
-        app.use(validator());
+        // app.use(validator());
         app.use(session({
             secret:'thisisasecret',
             resave:true,

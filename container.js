@@ -5,7 +5,10 @@ const container=dependable.container();
 
 const simpleDependencies=[
     ['_', 'lodash'],
-    ['passport','passport']
+    ['passport','passport'],
+    ['formidable', 'formidable'],
+    ['async', 'async'],
+    ['validator', 'express-validator']
 ];
 
 simpleDependencies.forEach(function(val){

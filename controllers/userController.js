@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports=function(_, passport, UserValidation){
+module.exports=function(_, passport, UserValidation, validator){
     return {
         SetRouting:function(router){
             router.get('/', this.indexPage);
@@ -9,7 +9,12 @@ module.exports=function(_, passport, UserValidation){
 
             // router.post('/', UserValidation.signinValidation, this.postSignIn);
             router.post('/',UserValidation.signinValidation, this.postSignin)
-            router.post('/signup',UserValidation.signupValidation, this.postSignUp);
+            // router.post('/signup',UserValidation.signupValidation, this.postSignUp);
+            router.post('/signup',[
+                validator.check('username').not().isEmpty().isLength({min:5}).withMessage('Username is required and must be at least 5 charactors.'),
+                validator.check('password').not().isEmpty().isLength({min:5}).withMessage('Password is required and must be at least 5 charactors.'),
+                validator.check('email').not().isEmpty().isEmail().withMessage('Email is required and must be an email.'),
+            ], this.postValidation, this.postSignUp);
         },
         indexPage:function(req, res){
             const errors=req.flash('error');
@@ -32,6 +37,10 @@ module.exports=function(_, passport, UserValidation){
         
         homePage:function(req, res){
             return res.render('home');
+        },
+        postValidation:function(req, res, next){
+            const err=validator.validationResult(req);
+            console.log(err);
         }
     }
 }
