@@ -14,7 +14,12 @@ const container=require('./container');
 
 container.resolve(function(userController, _){
     mongoose.Promise=global.Promise;
-    mongoose.connect('mongodb://localhost/mykik', {useNewUrlParser:true})
+    mongoose.connect('mongodb://localhost:27017/mykik', {useNewUrlParser:true})
+    .catch(error => {
+        console.log(error)
+        handleError(error);
+    });
+
     //Setup express
     const app=SetupExpress();
 
