@@ -45,19 +45,23 @@ passport.use('local.signin', new LocalStrategy({
     passwordField: 'password',
     passReqToCallback: true
 }, (req, email, password, done) => {
+    try {
+        User.findOne({'email': email}, (err, user) => {
+            if (err) { return done(err); }
+            const messages = [];
+            if (!user) {
+                messages.push('Incorrect username.');
+                return done(null, false, req.flash('error', messages));
+            }
+            if (!user.validUserPassword(password)) {
+                messages.push('Incorrect password.');
+                return done(null, false, req.flash('error', messages));
+            }
+            return done(null, user);
+            
+        });
+    } catch (error) {
+        console.log(error)
+    }
     
-    User.findOne({'email': email}, (err, user) => {
-        if (err) { return done(err); }
-        const messages = [];
-        if (!user) {
-            messages.push('Incorrect username.');
-            return done(null, false, req.flash('error', messages));
-        }
-        if (!user.validUserPassword(password)) {
-            messages.push('Incorrect password.');
-            return done(null, false, req.flash('error', messages));
-        }
-        return done(null, user);
-        
-    });
 }));
