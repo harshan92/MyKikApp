@@ -40,7 +40,21 @@ module.exports=function(_, passport, UserValidation, validator){
         },
         postValidation:function(req, res, next){
             const err=validator.validationResult(req);
-            console.log(err);
+            const errors=err.array();
+            const  messages=[];
+            errors.forEach(error => {
+                messages.push(error.msg);
+            });
+            if(messages.length>0){
+                req.flash('error', messages);
+                if(req.url==='/signup'){
+                    res.redirect('/signup');
+                }else if(req.url==='/'){
+                    res.redirect('/signup');
+                }
+            }
+            
+            return next();
         }
     }
 }
