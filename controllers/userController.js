@@ -8,7 +8,10 @@ module.exports=function(_, passport, UserValidation, validator){
             router.get('/home', this.homePage);
 
             // router.post('/', UserValidation.signinValidation, this.postSignIn);
-            router.post('/',UserValidation.signinValidation, this.postSignin)
+            router.post('/',[
+                validator.check('password').not().isEmpty().isLength({min:5}).withMessage('Password is required and must be at least 5 charactors.'),
+                validator.check('email').not().isEmpty().isEmail().withMessage('Email is required and must be an email.'),
+            ],this.postValidation, this.postSignin)
             // router.post('/signup',UserValidation.signupValidation, this.postSignUp);
             router.post('/signup',[
                 validator.check('username').not().isEmpty().isLength({min:5}).withMessage('Username is required and must be at least 5 charactors.'),
