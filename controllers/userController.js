@@ -6,6 +6,8 @@ module.exports=function(_, passport, UserValidation, validator){
             router.get('/', this.indexPage);
             router.get('/signup', this.getSignUp);
             router.get('/home', this.homePage);
+            router.get("/auth/facebook", this.getFacebookLogin);
+            router.get("/auth/facebook/callback", this.facebookLogin);
 
             // router.post('/', UserValidation.signinValidation, this.postSignIn);
             router.post('/',[
@@ -58,6 +60,14 @@ module.exports=function(_, passport, UserValidation, validator){
             }
             
             return next();
-        }
+        },
+        getFacebookLogin:passport.authenticate('facebook', {
+            scope:'email'
+        }),
+        facebookLogin:passport.authenticate('facebook',{
+            successRedirect:'/home',
+            failRedirect:'/signup',
+            failureFlash:true
+        })
     }
 }
