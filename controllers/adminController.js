@@ -1,6 +1,8 @@
+'use strict';
+
 module.exports=function(){
     return {
-        setRouter:function(router){
+        SetRouting:function(router){
             router.get('/dashboard', this.adminPage);
         },
         adminPage:function(req, res){
