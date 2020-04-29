@@ -32,7 +32,7 @@ passport.use(new FacebookStrategy({
         } else{
             const newUser=new User();
             newUser.facebook=profile.id;
-            newUser.first_name=profile.displayName;
+            newUser.full_name=profile.displayName;
             newUser.email=profile._json.email;
             newUser.userImage="https://graph.facebook.com/"+profile.id+"/picture?type=large";
             newUser.facebookTokens.push({token:token});
@@ -43,29 +43,3 @@ passport.use(new FacebookStrategy({
     })
 }));
 
-// signin
-passport.use('local.signin', new LocalStrategy({
-    usernameField: 'email',
-    passwordField: 'password',
-    passReqToCallback: true
-}, (req, email, password, done) => {
-    try {
-        User.findOne({'email': email}, (err, user) => {
-            if (err) { return done(err); }
-            const messages = [];
-            if (!user) {
-                messages.push('Incorrect username.');
-                return done(null, false, req.flash('error', messages));
-            }
-            if (!user.validUserPassword(password)) {
-                messages.push('Incorrect password.');
-                return done(null, false, req.flash('error', messages));
-            }
-            return done(null, user);
-            
-        });
-    } catch (error) {
-        console.log(error)
-    }
-    
-}));

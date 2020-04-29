@@ -4,6 +4,7 @@ const bcrypt=require('bcrypt-nodejs');
 const userSchema=mongoose.Schema({
     username:{type:String, unique:true},
     first_name:{type:String},
+    full_name:{type:String},
     last_name:{type:String},
     email:{type:String, unique:true},
     password:{type:String, default:''},

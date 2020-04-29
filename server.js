@@ -12,7 +12,7 @@ const passport=require('passport');
 
 const container=require('./container');
 
-container.resolve(function(userController, _){
+container.resolve(function(userController, _, adminController){
     mongoose.Promise=global.Promise;
     mongoose.connect('mongodb://localhost:27017/mykik', {useNewUrlParser:true})
     .catch(error => {
@@ -35,6 +35,7 @@ container.resolve(function(userController, _){
         //Setup router
         const router=require('express-promise-router')();
         userController.SetRouting(router);
+        adminController.SetRouting(router);
 
         app.use(router);
     }
@@ -44,6 +45,7 @@ container.resolve(function(userController, _){
     function ConfigureExpress(app){
         require('./passport/passport-local');
         require('./passport/passport-facebook');
+        require('./passport/passport-google');
         app.use(express.static('public'));
         app.use(cookieParser())
         app.set('view engine', 'ejs');

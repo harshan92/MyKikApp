@@ -32,7 +32,7 @@ passport.use('local.signup',new LocalStrategy({
         newUser.email=req.body.email;
         newUser.first_name=req.body.fname;
         newUser.last_name=req.body.lname;
-
+        newUser.full_name=req.body.fname+" "+req.body.lname;
         newUser.save((err)=>{
             done(null, newUser);
         })
