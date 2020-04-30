@@ -11,6 +11,16 @@ $(document).ready(function(){
             
             var formData=new FormData();
             formData.append('upload', uploadInput[0].files[0]);
+            $.ajax({
+                url:"/uploadFile",
+                type:'post',
+                data:formData,
+                processData:false,
+                contentData:false,
+                success:function(){
+                    uploadInput.val('')
+                }
+            })
         }
     });
 
