@@ -8,7 +8,9 @@ const simpleDependencies=[
     ['passport','passport'],
     ['formidable', 'formidable'],
     ['async', 'async'],
-    ['validator', 'express-validator']
+    ['validator', 'express-validator'],
+    ['Group','./models/group'],
+    ['lsu', './helpers/LSUpload']
 ];
 
 simpleDependencies.forEach(function(val){
