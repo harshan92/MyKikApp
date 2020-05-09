@@ -1,3 +1,4 @@
+console.log("Hello world!");
 $(document).ready(function(){
     $('.btn-upload').on('click',function(){
         $('#upload-input').click();
@@ -16,7 +17,7 @@ $(document).ready(function(){
                 type:'post',
                 data:formData,
                 processData:false,
-                contentData:false,
+                contentType:false,
                 success:function(){
                     uploadInput.val('')
                 }

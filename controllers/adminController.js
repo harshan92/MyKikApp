@@ -12,7 +12,7 @@ module.exports=function(formidable){
             res.render('admin/dashboard');
         },
         uploadFile:function(req, res){
-            const form=formidable.IncomingForm();
+            const form=new formidable.IncomingForm();
             form.uploadDir=path.join(__dirname, '../public/uploads');
 
             form.on('file', (field, file)=>{
