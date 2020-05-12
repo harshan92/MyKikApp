@@ -12,7 +12,7 @@ const passport=require('passport');
 
 const container=require('./container');
 
-container.resolve(function(userController, _, adminController){
+container.resolve(function(userController, _, adminController, homeController){
     mongoose.Promise=global.Promise;
     mongoose.connect('mongodb://localhost:27017/mykik', {useNewUrlParser:true})
     .catch(error => {
@@ -36,6 +36,7 @@ container.resolve(function(userController, _, adminController){
         const router=require('express-promise-router')();
         userController.SetRouting(router);
         adminController.SetRouting(router);
+        homeController.SetRouting(router);
 
         app.use(router);
     }

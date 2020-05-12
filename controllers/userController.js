@@ -5,7 +5,6 @@ module.exports=function(_, passport, UserValidation, validator){
         SetRouting:function(router){
             router.get('/', this.indexPage);
             router.get('/signup', this.getSignUp);
-            router.get('/home', this.homePage);
             router.get("/auth/facebook", this.getFacebookLogin);
             router.get("/auth/facebook/callback", this.facebookLogin);
 
@@ -39,10 +38,6 @@ module.exports=function(_, passport, UserValidation, validator){
             failRedirect:'/signup',
             failureFlash:true
         }),
-        
-        homePage:function(req, res){
-            return res.render('home');
-        },
         postValidation:function(req, res, next){
             const err=validator.validationResult(req);
             const errors=err.array();

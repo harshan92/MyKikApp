@@ -34,7 +34,14 @@ module.exports=function(formidable, Group, lsu){
             form.parse(req);
         },
         adminPostPage:function(req, res){
-            
+            const newGroup=new Group();
+            newGroup.name=req.body.group;
+            newGroup.country=req.body.country;
+            newGroup.image=req.body.upload;
+
+            newGroup.save((err)=>{
+                res.render('admin/dashboard');
+            });
         }
     }
 }
