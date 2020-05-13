@@ -19,10 +19,14 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
             <ul class="navbar-nav ">
                 <li class="nav-item active">
-                    <a class="nav-link" href="./">Login</a>
+                    <a class="nav-link" href="./members">Members</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./signup">Register</a>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown 
+                      
+                    </a>
+                   
                 </li>
             </ul>
         </div>
@@ -30,21 +34,19 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-
-           
-            <div class="card mb-3 mt-2">
-                <div class="card-body">
-                    <form action="">
-                        <div class="input-group ">
-                            <input type="text" class="form-control" placeholder="Search">
-                            <div class="input-group-append">
-                              <button class="btn btn-success" type="submit">Go</button>
+                <div class="card mb-3 mt-2">
+                    <div class="card-body">
+                        <form action="">
+                            <div class="input-group ">
+                                <input type="text" class="form-control">
+                                <div class="input-group-append">
+                                <button class="btn btn-primary" type="submit">Search</button>
+                                </div>
                             </div>
-                          </div>
-                    </form>
-                    
+                        </form>
+                        
+                    </div>
                 </div>
-            </div>
         </div>
         </div>
        <div class="row">
@@ -54,11 +56,17 @@
                    <div class="card-body">
                        <form action="">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Search">
-                            <div class="input-group-append">
-                              <button class="btn btn-success" type="submit">Go</button>
-                            </div>
+                            <!-- <input type="text" class="form-control" placeholder="Search"> -->
+                            <!-- <div class="input-group-append"> -->
+                              <select class="form-control">
+                                <option selected>Choose...</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                              </select>
+                            <!-- </div> -->
                           </div>
+                          <button class="btn btn-secondary float-right btn-sm" type="submit">Apply</button>
                        </form>
                    </div>
                </div>
@@ -68,9 +76,10 @@
                <!-- <div class="row"> -->
                     <div class="col-md-4 mb-2">
                         <div class="card">
+                        <img class="card-img-top" src="https://www.w3schools.com/bootstrap4/img_avatar5.png" alt="Card image">
                             <div class="card-body">
-                                <p class="font-weight-bold">Name</p>
-                                <p class="font-weight-light">Country</p>
+                                <p class="font-weight-bold mt-0 mb-0">Name</p>
+                                <p class="font-weight-light mt-0 ">Country</p>
                                 <button class="float-right"><small>Add To Favourite</small></button>
                             </div>
                         </div>
