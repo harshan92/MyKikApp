@@ -1,12 +1,14 @@
 'use strict';
 const path=require('path');
-// const fs=require('fs');
+const fs=require('fs');
+var multer  = require('multer')
+var upload = multer({ dest: 'uploads/' })
 module.exports=function(formidable, Group, lsu){
     return {
         SetRouting:function(router){
             router.get('/dashboard', this.adminPage);
 
-            router.post('/uploadFile',lsu.Upload.any(), this.uploadFile);
+            router.post('/uploadFile', this.uploadFile);
             router.post('/dashboard',this.adminPostPage);
         },
         adminPage:function(req, res){
@@ -14,13 +16,13 @@ module.exports=function(formidable, Group, lsu){
         },
         uploadFile:function(req, res){
             const form=new formidable.IncomingForm();
-            form.uploadDir=path.join(__dirname, '../public/temp_uploads');
+            form.uploadDir=path.join(__dirname, '../public/uploads');
 
             form.on('file', (field, file)=>{
-                // fs.rename(file.path, path.join(form.uploadDir, file.name), (err)=>{
-                //     if(err) throw err;
-                //     console.log("File renamed successfully!")
-                // });
+                fs.rename(file.path, path.join(form.uploadDir, file.name), (err)=>{
+                    if(err) throw err;
+                    console.log("File renamed successfully!")
+                });
             });
 
             form.on('error', (err)=>{
@@ -37,7 +39,8 @@ module.exports=function(formidable, Group, lsu){
             const newGroup=new Group();
             newGroup.name=req.body.group;
             newGroup.country=req.body.country;
-            newGroup.image=req.body.upload;
+            newGroup.image=req.body.upload_input;
+            console.log(req.body.upload_input);
 
             newGroup.save((err)=>{
                 res.render('admin/dashboard');
