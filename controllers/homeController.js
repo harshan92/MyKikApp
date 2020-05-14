@@ -9,11 +9,23 @@ module.exports=function(async, Group, _){
                 function(callback){
                     Group.find({},(err, result)=>{
                         callback(err, result);
-                    })
+                    });
+                },
+                function(callback){
+                    Group.aggregate([
+                        {$group:{
+                            _id:"$country"
+                        }}
+                    ],
+                    (err, newResult)=>{
+                        callback(err, newResult);
+                    }
+                    )
                 }
             ], (err, result)=>{
                 const res1=result[0];
-                console.log(res1);
+                const res2=result[1];
+                console.log(res2);
 
                 res.render('home', {title:'MyKik - Home',data:res1});
             })
