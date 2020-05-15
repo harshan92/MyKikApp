@@ -4,7 +4,8 @@ module.exports=function(){
             router.get('/group/:name', this.groupPage)
         },
         groupPage:function(req, res){
-            res.render('group_chat/group');
+            const name=req.params.name;
+            res.render('group_chat/group',{title:"MyKik - Group",name:name});
         }
     }
 }
