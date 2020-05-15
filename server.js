@@ -9,6 +9,7 @@ const MongoStore=require('connect-mongo')(session);
 const mongoose=require("mongoose");
 const flash=require('connect-flash');
 const passport=require('passport');
+const socketIO=require('socket.io');
 
 const container=require('./container');
 
@@ -26,6 +27,7 @@ container.resolve(function(userController, _, adminController, homeController, g
     function SetupExpress(){
         const app=express();
         const server=http.createServer(app);
+        const io=socketIO(server);
         server.listen(3000, function(){
             console.log("Listening on port 3000.");
         });
