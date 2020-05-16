@@ -5,6 +5,10 @@ $(document).ready(function(){
         console.log("Yeh!, User connected!");
     });
 
+    socket.on('newMessage', function(data){
+        console.log(data);
+    });
+
     $('#message-form').on('submit', function(e){
         e.preventDefault();
 
