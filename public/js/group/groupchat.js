@@ -24,7 +24,10 @@ $(document).ready(function(){
         var msg=$('#msg').val();
 
         socket.emit('createMessage',{
-            text:msg
+            text:msg,
+            room:room
+        }, function(){
+            $('#msg').val('');
         });
     })
 })
