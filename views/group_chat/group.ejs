@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     <title><%= title %></title>
 
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/groupchat.css">
 </head>
 <body>
     <%- include('../partials/navbar.ejs') %>
@@ -51,7 +52,7 @@
                     <h5>Online Friends</h5>
                 </div>
                 <div class="card-body">
-                    Content
+                    content
                  </div>
            </div>
            </div>
@@ -61,7 +62,20 @@
                        <h5>Group Name</h5>
                    </div>
                    <div class="card-body">
-                       Content
+                        <div class="chat_area">
+                            <ul id="messages" class="list-unstyled">
+                                <li class="left">
+                                    <span class="chat-img1 pull-left">
+                                        <img src="http://placehold.it/300x300" class="img-circle" alt="">
+                                    </span>
+                                    <div class="chat-body1">
+                                        <span class="chat-name">Username</span>
+                                        <br>
+                                        message body
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                    <div class="card-footer">
                        <form id="message-form"  method="POST">
