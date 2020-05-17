@@ -64,7 +64,7 @@
                    <div class="card-body">
                         <div class="chat_area">
                             <ul id="messages" class="list-unstyled">
-                                <li class="left">
+                                <!-- <li class="left">
                                     <span class="chat-img1 pull-left">
                                         <img src="http://placehold.it/300x300" class="img-circle" alt="">
                                     </span>
@@ -73,14 +73,27 @@
                                         <br>
                                         message body
                                     </div>
-                                </li>
+                                </li> -->
                             </ul>
+                            <script id="message-template" type="text/template">
+                                <li class="left">
+                                    <span class="chat-img1 pull-left">
+                                        <img src="http://placehold.it/300x300" class="img-circle" alt="">
+                                    </span>
+                                    <div class="chat-body1">
+                                        <span class="chat-name">{{ sender }}</span>
+                                        <br>
+                                        {{ text }}
+                                    </div>
+                                </li>
+                            </script>
                         </div>
                     </div>
                    <div class="card-footer">
                        <form id="message-form"  method="POST">
                            <div class="input-group">
                                <input type="hidden" id="groupName" name="groupName" value="<%= groupName %>">
+                               <input type="hidden" id="sender" name="sender" value="<%= user.first_name %>">
                                <input type="text" id="msg" class="form-control">
                                <div class="input-group-append">
                                 <button class="btn btn-info" id="send-message" type="submit">Send</button>
@@ -110,6 +123,7 @@
     <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.1.0/mustache.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/group/groupchat.js"></script>
 </body>
