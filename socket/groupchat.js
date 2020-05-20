@@ -1,9 +1,15 @@
-module.exports=function(io){
+module.exports=function(io, Users){
+
+    const users=new Users();
+
     io.on('connection', (socket)=>{
         console.log("User connected");
 
         socket.on('join', function(params, callback){
             socket.join(params.room);
+
+            users.addUserData(socket.id, params.name, params.room);
+            console.log(users);
             callback();
         });
 

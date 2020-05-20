@@ -14,7 +14,9 @@ class Users{
 
         var namesArray=users.map((user)=>{
             return user.name;
-        })
+        });
+
+        return namesArray;
     }
 }
 

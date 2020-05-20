@@ -11,6 +11,8 @@ const flash=require('connect-flash');
 const passport=require('passport');
 const socketIO=require('socket.io');
 
+const {Users}=require('./helpers/UsersClass');
+
 const container=require('./container');
 
 container.resolve(function(userController, _, adminController, homeController, groupController){
@@ -33,7 +35,7 @@ container.resolve(function(userController, _, adminController, homeController, g
         });
 
         ConfigureExpress(app);
-        require('./socket/groupchat')(io);
+        require('./socket/groupchat')(io, Users);
         //Setup router
         const router=require('express-promise-router')();
         userController.SetRouting(router);
