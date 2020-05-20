@@ -22,6 +22,14 @@ module.exports=function(io, Users){
             })
 
             callback();
-        })
+        });
+
+        socket.on('disconnect', ()=>{
+            var user=users.removeUser(socket.id);
+
+            if(user){
+                io.to(user.room).emit('usersList', users.getUsersList(user.room));
+            }
+        });
     })
 }
