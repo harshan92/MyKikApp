@@ -7,12 +7,17 @@ $(document).ready(function(){
     socket.on('connect', function() {
         console.log("Yeh!, User connected!");
         var params={
-            room:room
+            room:room,
+            name:sender
         };
 
         socket.emit('join', params, function(){
             console.log("User has joined this channel.");
         });
+    });
+
+    socket.on('usersList', function(users){
+        console.log(users);
     });
 
     socket.on('newMessage', function(data){
