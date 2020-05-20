@@ -17,7 +17,14 @@ $(document).ready(function(){
     });
 
     socket.on('usersList', function(users){
-        console.log(users);
+        var ol=$('<ol></ol>');
+
+        for(var i=0 ; i<users.length; i++){
+            if(users[i]){
+                ol.append('<p>'+users[i]+'<p>');
+            }
+        }
+        $('#users').html(ol);
     });
 
     socket.on('newMessage', function(data){
