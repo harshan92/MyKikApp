@@ -27,7 +27,7 @@ module.exports=function(async, Group, _){
                 const res2=result[1];
                 console.log(res2);
 
-                res.render('home', {title:'MyKik - Home',data:res1, countries:res2});
+                res.render('home', {title:'MyKik - Home', user:req.user, data:res1, countries:res2});
             })
              
         }
