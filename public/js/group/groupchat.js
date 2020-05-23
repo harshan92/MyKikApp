@@ -24,6 +24,11 @@ $(document).ready(function(){
                 ol.append('<p><a id="val" data-toggle="modal" data-target="#myModal">'+users[i]+'</a><p>');
             }
         }
+        $(document).on("click","#val",function(){
+            $("#title-name").text('@'+$(this).text());
+            $("#receiverName").val($(this).text());
+            $("#nameLink").attr("href", "/profile/"+$(this).text());
+        });
         $('#numUsers').text('('+users.length+')');
         $('#users').html(ol);
     });
