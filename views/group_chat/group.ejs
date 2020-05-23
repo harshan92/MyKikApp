@@ -121,17 +121,22 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="title-name"></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          ...
+          <form action="" method="post" class="mx-auto" id="add-friend">
+              <input type="hidden" name="receiverName" id="receiverName" value="">
+              <input type="hidden" name="senderName" id="senderName" id="sender-name" value="<%= user.username %>">
+              <button type="submit" id="friend-add" class="btn btn-primary"> Add Friend</button>
+              <a class="btn btn-secondary" id="nameLink" style="color: ivory;">View Profile</a>
+          </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Add Friend</button>
+          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Add Friend</button> -->
         </div>
       </div>
     </div>
