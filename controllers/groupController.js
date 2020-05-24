@@ -1,4 +1,4 @@
-module.exports=function(){
+module.exports=function(Users){
     return {
         SetRouting:function(router){
             router.get('/group/:name', this.groupPage)

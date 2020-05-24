@@ -10,6 +10,7 @@ const simpleDependencies=[
     ['async', 'async'],
     ['validator', 'express-validator'],
     ['Group','./models/group'],
+    ['Users','./models/user'],
     ['lsu', './helpers/LSUpload']
 ];
 
