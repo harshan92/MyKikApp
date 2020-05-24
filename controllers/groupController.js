@@ -29,8 +29,25 @@ module.exports=function(Users, async){
                             callback(err, count);
                         });
                     }
+                },
+                function(callback){
+                    if(req.body.receiverName){
+                        Users.update({
+                            "username":req.user.username,
+                            "sentRequest.username":{$ne: req.body.receiverName}
+                        },
+                        {
+                            $push:{sentRequest:{
+                                username:req.body.receiverName
+                            }}
+                        },(err, count)=>{
+                            callback(err, count);
+                        })
+                    }
                 }
-            ])
+            ], (err, results)=>{
+                res.redirect('/group/'+req.params.name);
+            })
         }
     }
 }
