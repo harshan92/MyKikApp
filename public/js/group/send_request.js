@@ -19,8 +19,11 @@ $(document).ready(function(){
 
     $('#add_friend').on('submit', function(e){
         e.preventDefault();
+        console.log('clicked Add Friend');
 
         var receiverName=$('#receiverName').val();
+        console.log('Receiver name '+receiverName);
+        console.log('Sender name '+sender);
 
         $.ajax({
             url:"/group/"+room,

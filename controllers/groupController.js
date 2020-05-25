@@ -46,7 +46,7 @@ module.exports=function(Users, async){
                     }
                 }
             ], (err, results)=>{
-                res.redirect('/group/'+req.params.name);
+                res.redirect('/group/'+req.params.username);
             })
         }
     }
